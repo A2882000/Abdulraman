@@ -1,0 +1,52 @@
+<html>
+ <head>
+  <title>Vue.js Pet Depot</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+   <header>
+    <h1 v-text="sitename"></h1>
+  </header>
+<main>
+ <figure>
+  <!--bind the 'src' attriute to the 'product.image' in 'data' -->
+<img v-bind:src="product.image">
+</figure>
+<h2 v-html="product.title"></h2>
+<p v-html="product.descriptopn"></p>
+<!-- The double curly brackets is the shorter version of 'v-text' -->
+<p>Price: {{product.price}}</p>
+<button V-on:click="addToCart">
+  Add to cart
+
+</button>
+</main>
+  
+</div>
+<script type ="text/javascript">
+    var wbstore = new Vue({
+      el:'#app',// <=== Don't forget this comma data: { // the data'option
+     // the key 'sitename' matches the value of 'v-text' earlier sitename: 'Vue.js Pet Depot'
+data: {
+sitename: "Vue.js Pet Depot",
+product: {
+id: 1001,
+title: "Cat Food, 25lb bag",
+description:"A 25 pound bag of <em>irresitible</em>," + "organic goodness for your cat.",
+price: 2000,
+image: "school.jpg"
+},
+cart:  []
+},
+methods: {
+  addToCart: function () {
+    this.cart.push(this.product.id);
+   
+  }
+}
+}
+    );
+</script>
+</body>
+</html>
